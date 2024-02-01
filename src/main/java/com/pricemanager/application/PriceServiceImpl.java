@@ -1,7 +1,7 @@
 package com.pricemanager.application;
 
-import com.pricemanager.infrastructure.persistence.PriceEntity;
-import com.pricemanager.infrastructure.persistence.PriceRepository;
+import com.pricemanager.domain.Price;
+import com.pricemanager.domain.PriceRepository;
 import com.pricemanager.infrastructure.rest.PriceDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,27 +16,25 @@ public class PriceServiceImpl implements PriceService {
 
     public PriceDto findPrice(LocalDateTime date, Long productId, Long brandId) {
         // TODO mapper
-        PriceEntity priceEntity =
-                priceRepository.findHighestPriorityPrice(
-                        date, productId, brandId).stream().findFirst().orElse(null);
-        return toDto(priceEntity);
+        Price price = priceRepository.findHighestPriorityPrice(date, productId, brandId);
+        return toDto(price);
     }
 
-    private PriceDto toDto(PriceEntity priceEntity) {
-        if (priceEntity == null) {
+    private PriceDto toDto(Price price) {
+        if (price == null) {
             return null;
         }
 
         return new PriceDto(
-                priceEntity.getId(),
-                priceEntity.getBrandId(),
-                priceEntity.getStartDate(),
-                priceEntity.getEndDate(),
-                priceEntity.getPriceList(),
-                priceEntity.getProductId(),
-                priceEntity.getPriority(),
-                priceEntity.getPrice(),
-                priceEntity.getCurrency()
+                price.getId(),
+                price.getBrandId(),
+                price.getStartDate(),
+                price.getEndDate(),
+                price.getPriceList(),
+                price.getProductId(),
+                price.getPriority(),
+                price.getPrice(),
+                price.getCurrency()
         );
     }
 }
