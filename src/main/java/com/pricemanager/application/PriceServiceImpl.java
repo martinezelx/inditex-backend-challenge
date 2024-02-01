@@ -4,6 +4,7 @@ import com.pricemanager.domain.Price;
 import com.pricemanager.domain.PriceRepository;
 import com.pricemanager.infrastructure.rest.PriceResponseDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -13,25 +14,10 @@ import java.time.LocalDateTime;
 public class PriceServiceImpl implements PriceService {
 
     private final PriceRepository priceRepository;
+    private final ConversionService conversionService;
 
     public PriceResponseDto findPrice(LocalDateTime date, Long productId, Long brandId) {
-        // TODO mapper
         Price price = priceRepository.findHighestPriorityPrice(date, productId, brandId);
-        return toDto(price);
-    }
-
-    private PriceResponseDto toDto(Price price) {
-        if (price == null) {
-            return null;
-        }
-
-        return new PriceResponseDto(
-                price.getProductId(),
-                price.getBrandId(),
-                price.getPriceList(),
-                price.getStartDate(),
-                price.getEndDate(),
-                price.getPrice()
-        );
+        return conversionService.convert(price, PriceResponseDto.class);
     }
 }
