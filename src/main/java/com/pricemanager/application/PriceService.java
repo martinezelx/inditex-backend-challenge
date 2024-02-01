@@ -1,10 +1,10 @@
 package com.pricemanager.application;
 
-import com.pricemanager.infrastructure.rest.PriceDto;
+import com.pricemanager.infrastructure.rest.PriceResponseDto;
 
 import java.time.LocalDateTime;
 
 public interface PriceService {
 
-    PriceDto findPrice(LocalDateTime date, Long productId, Long brandId);
+    PriceResponseDto findPrice(LocalDateTime date, Long productId, Long brandId);
 }

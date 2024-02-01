@@ -55,7 +55,7 @@
 
         <!-- Spring Boot Actuator -->
         <!-- http://localhost:8080/actuator/health -->
-        <!-- http://localhost:8080/actuator/metrics/mower.process.instructions -->
+        <!-- http://localhost:8080/actuator/metrics/prices.timed -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
