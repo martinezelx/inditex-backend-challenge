@@ -3,16 +3,16 @@ package com.pricemanager.application;
 import com.pricemanager.domain.Price;
 import com.pricemanager.domain.PriceRepository;
 import com.pricemanager.infrastructure.rest.PriceResponseDto;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@RequiredArgsConstructor
 @Service
 public class PriceServiceImpl implements PriceService {
 
-    @Autowired
-    private PriceRepository priceRepository;
+    private final PriceRepository priceRepository;
 
     public PriceResponseDto findPrice(LocalDateTime date, Long productId, Long brandId) {
         // TODO mapper

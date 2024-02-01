@@ -4,7 +4,7 @@ import com.pricemanager.application.PriceService;
 import io.micrometer.core.annotation.Timed;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.constraints.NotNull;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,12 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/prices")
 public class PriceManagerController {
 
-    @Autowired
-    private PriceService priceService;
+    private final PriceService priceService;
 
     @GetMapping
     @Operation(summary = "Returns the highest priority price for a given product, brand and date.")
