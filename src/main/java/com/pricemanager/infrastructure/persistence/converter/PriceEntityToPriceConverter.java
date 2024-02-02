@@ -10,7 +10,6 @@ public class PriceEntityToPriceConverter implements Converter<PriceEntity, Price
     @Override
     public Price convert(PriceEntity source) {
         return new Price(
-                source.getId(),
                 source.getBrandId(),
                 source.getStartDate(),
                 source.getEndDate(),

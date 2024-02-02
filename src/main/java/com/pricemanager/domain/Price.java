@@ -3,7 +3,6 @@ package com.pricemanager.domain;
 import java.time.LocalDateTime;
 
 public record Price(
-    Long id,
     Long brandId,
     LocalDateTime startDate,
     LocalDateTime endDate,
