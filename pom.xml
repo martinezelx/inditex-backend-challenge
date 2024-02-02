@@ -105,6 +105,16 @@
                 </excludes>
             </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <!-- Enables dynamic loading of Java agents at runtime, useful for on-the-fly
+                    diagnostics and monitoring without restarting the application. Use with
+                    caution in production due to potential security and performance implications. -->
+                    <argLine>-XX:+EnableDynamicAgentLoading</argLine>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
