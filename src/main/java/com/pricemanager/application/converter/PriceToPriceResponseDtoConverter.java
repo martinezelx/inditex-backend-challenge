@@ -10,12 +10,12 @@ public class PriceToPriceResponseDtoConverter implements Converter<Price, PriceR
     @Override
     public PriceResponseDto convert(Price source) {
         return new PriceResponseDto(
-                source.getProductId(),
-                source.getBrandId(),
-                source.getPriceList(),
-                source.getStartDate(),
-                source.getEndDate(),
-                source.getPrice()
+                source.productId(),
+                source.brandId(),
+                source.priceList(),
+                source.startDate(),
+                source.endDate(),
+                source.price()
         );
     }
 }
