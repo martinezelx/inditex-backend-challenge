@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.method.annotation.HandlerMethodValidationException;
@@ -40,6 +41,16 @@ public class GlobalExceptionHandler {
                 .exception(ex.getClass().getSimpleName())
                 .status(HttpStatus.NOT_FOUND)
                 .message(ex.getMessage())
+                .build();
+        return new ResponseEntity<>(apiError, apiError.getStatus());
+    }
+
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<Object> handleMissingServletRequestParameter(MissingServletRequestParameterException e) {
+        ApiError apiError = ApiError.builder()
+                .exception(e.getClass().getSimpleName())
+                .status(HttpStatus.BAD_REQUEST)
+                .message(e.getMessage())
                 .build();
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
