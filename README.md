@@ -70,6 +70,13 @@ mvn test
 ```shell
 mvn spring-boot:run
 ```
+## Validations
+> [!WARNING]
+> All request parameters are required.
+### Date format
+- The date format must be in the ISO8601 format: `yyyy-MM-dd'T'HH:mm:ss`.
+### Product ID and Brand ID
+- Both the product ID and the brand ID must be greater than 0.
 
 ## Available endpoints
 Since the project uses SpringDoc OpenApi, we can see the available endpoints at the following link:
