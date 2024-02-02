@@ -2,6 +2,7 @@ package com.pricemanager.infrastructure.persistence;
 
 import com.pricemanager.domain.Price;
 import com.pricemanager.domain.PriceRepository;
+import com.pricemanager.infrastructure.exception.ErrorMessages;
 import com.pricemanager.infrastructure.persistence.exception.PriceNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.convert.ConversionService;
@@ -21,7 +22,7 @@ public class PriceRepositoryImpl implements PriceRepository {
         return conversionService.convert(
                 priceJPARepository
                         .findHighestPriorityPrice(date, productId, brandId)
-                        .orElseThrow(() -> new PriceNotFoundException("Price not found for the given date, product ID and brand ID")),
+                        .orElseThrow(() -> new PriceNotFoundException(ErrorMessages.PRICE_NOT_FOUND)),
                 Price.class
         );
     }
