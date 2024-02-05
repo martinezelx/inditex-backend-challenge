@@ -79,7 +79,7 @@ mvn spring-boot:run
 ### Product ID and Brand ID
 - Both the product ID and the brand ID must be greater than 0.
 
-> [!INFO]
+> [!CAUTION]
 > The data types given in the example for the models have been respected, but perhaps it would be better to place the ids as UUIDs or save the dates as epochs. In any case, all this will depend on the context of the project and the personal opinions of each engineer.
 
 ## Available endpoints
