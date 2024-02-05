@@ -3,6 +3,7 @@ package com.pricemanager.infrastructure.rest;
 import com.pricemanager.application.PriceService;
 import com.pricemanager.infrastructure.exception.ErrorMessages;
 import com.pricemanager.infrastructure.persistence.exception.PriceNotFoundException;
+import com.pricemanager.utils.TestConstants;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +20,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(PriceManagerController.class)
 public class PriceManagerControllerTest {
-
-    private static final String URL = "/api/v1/prices";
 
     @Autowired
     private MockMvc mockMvc;
@@ -45,7 +44,7 @@ public class PriceManagerControllerTest {
 
         given(priceService.findPrice(date, productId, brandId)).willReturn(priceResponseDto);
 
-        mockMvc.perform(get(URL)
+        mockMvc.perform(get(TestConstants.PRICE_API_URL)
                         .param("date", date.toString())
                         .param("productId", productId.toString())
                         .param("brandId", brandId.toString())
@@ -57,7 +56,7 @@ public class PriceManagerControllerTest {
 
     @Test
     public void getPrice_WhenDateIsMissing_ShouldReturnBadRequest() throws Exception {
-        mockMvc.perform(get(URL)
+        mockMvc.perform(get(TestConstants.PRICE_API_URL)
                         .param("productId", productId.toString())
                         .param("brandId", brandId.toString())
                         .contentType(MediaType.APPLICATION_JSON))
@@ -66,7 +65,7 @@ public class PriceManagerControllerTest {
 
     @Test
     public void getPrice_WhenProductIdIsMissing_ShouldReturnBadRequest() throws Exception {
-        mockMvc.perform(get(URL)
+        mockMvc.perform(get(TestConstants.PRICE_API_URL)
                         .param("date", date.toString())
                         .param("brandId", brandId.toString())
                         .contentType(MediaType.APPLICATION_JSON))
@@ -75,7 +74,7 @@ public class PriceManagerControllerTest {
 
     @Test
     public void getPrice_WhenBrandIdIsMissing_ShouldReturnBadRequest() throws Exception {
-        mockMvc.perform(get(URL)
+        mockMvc.perform(get(TestConstants.PRICE_API_URL)
                         .param("date", date.toString())
                         .param("productId", productId.toString())
                         .contentType(MediaType.APPLICATION_JSON))
@@ -86,7 +85,7 @@ public class PriceManagerControllerTest {
     public void getPrice_WhenPriceNotFound_ShouldReturnNotFound() throws Exception {
         given(priceService.findPrice(date, productId, brandId)).willThrow(new PriceNotFoundException(ErrorMessages.PRICE_NOT_FOUND));
 
-        mockMvc.perform(get(URL)
+        mockMvc.perform(get(TestConstants.PRICE_API_URL)
                         .param("date", date.toString())
                         .param("productId", productId.toString())
                         .param("brandId", brandId.toString())

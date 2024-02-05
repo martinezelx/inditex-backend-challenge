@@ -1,6 +1,7 @@
 package com.pricemanager.infrastructure.exception;
 
 import com.pricemanager.infrastructure.persistence.exception.PriceNotFoundException;
+import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
@@ -41,6 +42,16 @@ public class GlobalExceptionHandler {
                 .exception(ex.getClass().getSimpleName())
                 .status(HttpStatus.NOT_FOUND)
                 .message(ex.getMessage())
+                .build();
+        return new ResponseEntity<>(apiError, apiError.getStatus());
+    }
+
+    @ExceptionHandler(ConversionFailedException.class)
+    public ResponseEntity<Object> handleConversionFailedException(ConversionFailedException e) {
+        ApiError apiError = ApiError.builder()
+                .exception(e.getClass().getSimpleName())
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .message(e.getMessage())
                 .build();
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }

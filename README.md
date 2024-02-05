@@ -1,18 +1,19 @@
-# BCNGroup backend challengue for inditex
+# BCNGroup backend challenge for Inditex
 
 ## Description
-- This project is a backend challenge for inditex. It is a REST API that allows to manage a list of products and their prices.
+- This project is a backend challenge for Inditex. It is a REST API that allows to manage a list of products and their prices.
 - The instructions and rules of the challenge can be found in the following [link](./readme-resources/docs/code_challenge_bcngroup_inditex.pdf).
 
 ## Tech Stack
 - IDE: IntelliJ IDEA Community Edition (2023.3)
 - Java: 21.0.1 OpenJDK
 - Spring Boot: 3.2.2
+    - Spring Starter Web
     - Spring Data
-    - Spring DevTools
-    - Spring Web
+    - Spring Boot Validation
+    - Spring Boot Test
     - Spring Actuator
-    - Spring Validation
+    - Spring DevTools
 - Lombok: 1.18.30
 - SpringDoc OpenApi: 2.3.0
 - H2 Database
@@ -32,7 +33,7 @@
 ### Choosing Java 21
 - Java 21, being the latest Long-Term Support (LTS) version, was selected as the programming language for this project. This choice allows us to leverage the newest features and improvements in the Java language, ensuring modern practices and efficient performance.
 ### Choosing Spring Boot 3.2.2
-- Spring Boot 3.2.2 was chosen for its extensive set of features that significantly simplify the development and deployment of web applications. Its auto-configuration capabilities, along with a wide array of starter kits, allow for rapid development and easy integration of various components. Spring Boot 3.2.0 also aligns well with our use of Java 21, supporting and enhancing the latest features of the language.
+- Spring Boot 3.2.2 was chosen for its extensive set of features that significantly simplify the development and deployment of web applications. Its autoconfiguration capabilities, along with a wide array of starter kits, allow for rapid development and easy integration of various components. Spring Boot 3.2.0 also aligns well with our use of Java 21, supporting and enhancing the latest features of the language.
 ### Using Lombok to Reduce Boilerplate
 - Lombok was used to reduce boilerplate code and improve the readability of the application. By eliminating the need for repetitive code, Lombok allows developers to focus on the core business logic, resulting in a cleaner and more concise codebase.
 ### Using SpringDoc OpenApi to Document the API
