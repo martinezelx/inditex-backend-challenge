@@ -1,14 +1,15 @@
 package com.pricemanager.application;
 
-import com.pricemanager.domain.Price;
 import com.pricemanager.domain.PriceRepository;
 import com.pricemanager.infrastructure.rest.PriceResponseDto;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class PriceServiceImpl implements PriceService {
@@ -17,7 +18,8 @@ public class PriceServiceImpl implements PriceService {
     private final ConversionService conversionService;
 
     public PriceResponseDto findPrice(LocalDateTime date, Long productId, Long brandId) {
-        Price price = priceRepository.findHighestPriorityPrice(date, productId, brandId);
-        return conversionService.convert(price, PriceResponseDto.class);
+        log.info("Finding price for date: {}, productId: {}, brandId: {}", date, productId, brandId);
+        return conversionService.convert(
+                priceRepository.findHighestPriorityPrice(date, productId, brandId), PriceResponseDto.class);
     }
 }

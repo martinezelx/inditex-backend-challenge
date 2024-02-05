@@ -1,6 +1,7 @@
 package com.pricemanager.infrastructure.exception;
 
 import com.pricemanager.infrastructure.persistence.exception.PriceNotFoundException;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 import java.util.HashMap;
 import java.util.Map;
 
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
@@ -33,6 +35,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .message(errors.toString())
                 .build();
+        log.error(ErrorMessages.METHOD_ARGUMENT_NOT_VALID, e.getMessage(), e);
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
@@ -43,6 +46,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.NOT_FOUND)
                 .message(ex.getMessage())
                 .build();
+        log.error(ErrorMessages.PRICE_NOT_FOUND, ex.getMessage(), ex);
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
@@ -53,6 +57,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .message(e.getMessage())
                 .build();
+        log.error(ErrorMessages.CONVERSION_FAILED, e.getMessage(), e);
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
@@ -63,6 +68,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .message(e.getMessage())
                 .build();
+        log.error(ErrorMessages.MISSING_SERVLET_REQUEST_PARAMETER, e.getMessage(), e);
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
@@ -73,6 +79,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .message(e.getMessage())
                 .build();
+        log.error(ErrorMessages.HANDLER_METHOD_VALIDATION_FAILED, e.getMessage(), e);
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
@@ -83,6 +90,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .message(e.getMessage())
                 .build();
+        log.error(ErrorMessages.METHOD_ARGUMENT_TYPE_MISMATCH, e.getMessage(), e);
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
@@ -93,6 +101,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.BAD_REQUEST)
                 .message(e.getMessage())
                 .build();
+        log.error(ErrorMessages.HTTP_MESSAGE_NOT_READABLE, e.getMessage(), e);
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
@@ -103,6 +112,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .message(e.getMessage())
                 .build();
+        log.error(ErrorMessages.GENERIC_EXCEPTION, e.getMessage(), e);
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 
@@ -113,6 +123,7 @@ public class GlobalExceptionHandler {
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .message(e.getMessage())
                 .build();
+        log.error(ErrorMessages.NULL_POINTER_EXCEPTION, e.getMessage(), e);
         return new ResponseEntity<>(apiError, apiError.getStatus());
     }
 }
