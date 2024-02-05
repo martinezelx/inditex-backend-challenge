@@ -79,6 +79,9 @@ mvn spring-boot:run
 ### Product ID and Brand ID
 - Both the product ID and the brand ID must be greater than 0.
 
+> [!INFO]
+> The data types given in the example for the models have been respected, but perhaps it would be better to place the ids as UUIDs or save the dates as epochs. In any case, all this will depend on the context of the project and the personal opinions of each engineer.
+
 ## Available endpoints
 Since the project uses SpringDoc OpenApi, we can see the available endpoints at the following link:
 [http://localhost:8080/swagger-ui/index.html](http://localhost:8080/swagger-ui/index.html)
