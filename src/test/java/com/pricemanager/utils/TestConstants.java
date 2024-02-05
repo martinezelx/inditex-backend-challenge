@@ -4,6 +4,10 @@ import java.time.format.DateTimeFormatter;
 
 public final class TestConstants {
 
+    private TestConstants() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static final String PRICE_API_URL = "/api/v1/prices";
     public static final String PRODUCT_ID = "35455";
     public static final String BRAND_ID = "1";
