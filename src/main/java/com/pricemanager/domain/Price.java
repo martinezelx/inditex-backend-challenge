@@ -10,5 +10,4 @@ public record Price(
     Long productId,
     Integer priority,
     Double price,
-    String currency
-) {}
+    String currency) {}

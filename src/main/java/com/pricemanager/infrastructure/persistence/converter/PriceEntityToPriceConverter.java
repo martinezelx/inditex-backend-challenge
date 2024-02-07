@@ -7,17 +7,16 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PriceEntityToPriceConverter implements Converter<PriceEntity, Price> {
-    @Override
-    public Price convert(PriceEntity source) {
-        return new Price(
-                source.getBrandId(),
-                source.getStartDate(),
-                source.getEndDate(),
-                source.getPriceList(),
-                source.getProductId(),
-                source.getPriority(),
-                source.getPrice(),
-                source.getCurrency()
-        );
-    }
+  @Override
+  public Price convert(PriceEntity source) {
+    return new Price(
+        source.getBrandId(),
+        source.getStartDate(),
+        source.getEndDate(),
+        source.getPriceList(),
+        source.getProductId(),
+        source.getPriority(),
+        source.getPrice(),
+        source.getCurrency());
+  }
 }

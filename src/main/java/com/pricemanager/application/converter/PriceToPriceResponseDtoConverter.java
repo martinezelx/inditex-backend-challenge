@@ -7,15 +7,14 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class PriceToPriceResponseDtoConverter implements Converter<Price, PriceResponseDto> {
-    @Override
-    public PriceResponseDto convert(Price source) {
-        return new PriceResponseDto(
-                source.productId(),
-                source.brandId(),
-                source.priceList(),
-                source.startDate(),
-                source.endDate(),
-                source.price()
-        );
-    }
+  @Override
+  public PriceResponseDto convert(Price source) {
+    return new PriceResponseDto(
+        source.productId(),
+        source.brandId(),
+        source.priceList(),
+        source.startDate(),
+        source.endDate(),
+        source.price());
+  }
 }

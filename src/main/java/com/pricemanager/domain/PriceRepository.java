@@ -4,5 +4,5 @@ import java.time.LocalDateTime;
 
 public interface PriceRepository {
 
-    Price findHighestPriorityPrice(LocalDateTime date, Long productId, Long brandId);
+  Price findHighestPriorityPrice(LocalDateTime date, Long productId, Long brandId);
 }
