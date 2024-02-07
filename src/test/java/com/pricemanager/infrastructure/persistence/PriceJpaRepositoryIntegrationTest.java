@@ -13,12 +13,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 @AutoConfigureTestDatabase
-public class PriceJpaRepositoryIntegrationTest {
+class PriceJpaRepositoryIntegrationTest {
 
   @Autowired private PriceJpaRepository priceJpaRepository;
 
   @Test
-  public void whenFindHighestPriorityPrice_thenReturnCorrectPrice() {
+  void whenFindHighestPriorityPrice_thenReturnCorrectPrice() {
 
     Optional<PriceEntity> result =
         priceJpaRepository.findHighestPriorityPrice(
@@ -34,7 +34,7 @@ public class PriceJpaRepositoryIntegrationTest {
   }
 
   @Test
-  public void whenFindHighestPriorityPriceWithNonMatchingDate_thenNoResult() {
+  void whenFindHighestPriorityPriceWithNonMatchingDate_thenNoResult() {
     Optional<PriceEntity> result =
         priceJpaRepository.findHighestPriorityPrice(
             LocalDateTime.parse(
@@ -45,7 +45,7 @@ public class PriceJpaRepositoryIntegrationTest {
   }
 
   @Test
-  public void whenFindHighestPriorityPriceWithNonExistentProductId_thenNoResult() {
+  void whenFindHighestPriorityPriceWithNonExistentProductId_thenNoResult() {
     Optional<PriceEntity> result =
         priceJpaRepository.findHighestPriorityPrice(
             LocalDateTime.parse(TestConstants.VALID_DATE, DateTimeFormatter.ISO_DATE_TIME),
@@ -55,7 +55,7 @@ public class PriceJpaRepositoryIntegrationTest {
   }
 
   @Test
-  public void whenFindHighestPriorityPriceWithNonExistentBrandId_thenNoResult() {
+  void whenFindHighestPriorityPriceWithNonExistentBrandId_thenNoResult() {
     Optional<PriceEntity> result =
         priceJpaRepository.findHighestPriorityPrice(
             LocalDateTime.parse(TestConstants.VALID_DATE, DateTimeFormatter.ISO_DATE_TIME),

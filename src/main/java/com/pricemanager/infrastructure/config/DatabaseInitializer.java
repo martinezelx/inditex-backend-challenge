@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class DatabaseInitializer {
 
+  private static final Random random = new Random();
+
   @Bean
   public CommandLineRunner initDatabase(PriceJpaRepository priceRepository) {
     return args -> {
@@ -21,7 +23,7 @@ public class DatabaseInitializer {
       priceRepository.saveAll(
           Arrays.asList(
               new PriceEntity(
-                  new Random().nextLong(),
+                  random.nextLong(),
                   1L,
                   LocalDateTime.parse("2020-06-14-00.00.00", formatter),
                   LocalDateTime.parse("2020-12-31-23.59.59", formatter),
@@ -31,7 +33,7 @@ public class DatabaseInitializer {
                   35.50,
                   "EUR"),
               new PriceEntity(
-                  new Random().nextLong(),
+                  random.nextLong(),
                   1L,
                   LocalDateTime.parse("2020-06-14-15.00.00", formatter),
                   LocalDateTime.parse("2020-06-14-18.30.00", formatter),
@@ -41,7 +43,7 @@ public class DatabaseInitializer {
                   25.45,
                   "EUR"),
               new PriceEntity(
-                  new Random().nextLong(),
+                  random.nextLong(),
                   1L,
                   LocalDateTime.parse("2020-06-15-00.00.00", formatter),
                   LocalDateTime.parse("2020-06-15-11.00.00", formatter),
@@ -51,7 +53,7 @@ public class DatabaseInitializer {
                   30.50,
                   "EUR"),
               new PriceEntity(
-                  new Random().nextLong(),
+                  random.nextLong(),
                   1L,
                   LocalDateTime.parse("2020-06-15-16.00.00", formatter),
                   LocalDateTime.parse("2020-12-31-23.59.59", formatter),

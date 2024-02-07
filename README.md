@@ -51,6 +51,8 @@
 - The code coverage report can be found in the following path: `target/site/jacoco/index.html`
 ### Implementing fmt-maven-plugin
 - fmt-maven-plugin was used to enforce a consistent code style across the application. This plugin provides a simple and straightforward way to format the codebase according to google styleguide. When the application is built, the plugin automatically formats the codebase, ensuring that the code adheres to the defined style guide.
+### Use of JUnit 5.10.1 for Testing
+- JUnit 5 was used for testing the application. This library provides a simple and straightforward way to write and execute tests. By leveraging the features provided by JUnit 5, we can easily write and execute unit tests, ensuring the reliability and stability of the application.
 ### Focusing on Clean and Maintainable Code
 - Throughout the development process, a strong emphasis was placed on writing clean, well-documented, and maintainable code. This approach not only makes future modifications and extensions more manageable but also ensures that the application adheres to industry best practices.
 

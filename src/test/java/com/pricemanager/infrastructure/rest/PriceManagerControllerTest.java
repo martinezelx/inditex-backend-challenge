@@ -18,7 +18,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 @WebMvcTest(PriceManagerController.class)
-public class PriceManagerControllerTest {
+class PriceManagerControllerTest {
 
   @Autowired private MockMvc mockMvc;
 
@@ -36,7 +36,7 @@ public class PriceManagerControllerTest {
   }
 
   @Test
-  public void getPrice_ShouldReturnPriceResponseDto() throws Exception {
+  void getPrice_ShouldReturnPriceResponseDto() throws Exception {
     PriceResponseDto priceResponseDto =
         new PriceResponseDto(productId, brandId, 1, date, date, 35.50);
 
@@ -55,7 +55,7 @@ public class PriceManagerControllerTest {
   }
 
   @Test
-  public void getPrice_WhenDateIsMissing_ShouldReturnBadRequest() throws Exception {
+  void getPrice_WhenDateIsMissing_ShouldReturnBadRequest() throws Exception {
     mockMvc
         .perform(
             get(TestConstants.PRICE_API_URL)
@@ -66,7 +66,7 @@ public class PriceManagerControllerTest {
   }
 
   @Test
-  public void getPrice_WhenProductIdIsMissing_ShouldReturnBadRequest() throws Exception {
+  void getPrice_WhenProductIdIsMissing_ShouldReturnBadRequest() throws Exception {
     mockMvc
         .perform(
             get(TestConstants.PRICE_API_URL)
@@ -77,7 +77,7 @@ public class PriceManagerControllerTest {
   }
 
   @Test
-  public void getPrice_WhenBrandIdIsMissing_ShouldReturnBadRequest() throws Exception {
+  void getPrice_WhenBrandIdIsMissing_ShouldReturnBadRequest() throws Exception {
     mockMvc
         .perform(
             get(TestConstants.PRICE_API_URL)
@@ -88,7 +88,7 @@ public class PriceManagerControllerTest {
   }
 
   @Test
-  public void getPrice_WhenPriceNotFound_ShouldReturnNotFound() throws Exception {
+  void getPrice_WhenPriceNotFound_ShouldReturnNotFound() throws Exception {
     given(priceService.findPrice(date, productId, brandId))
         .willThrow(new PriceNotFoundException(ErrorMessages.PRICE_NOT_FOUND));
 

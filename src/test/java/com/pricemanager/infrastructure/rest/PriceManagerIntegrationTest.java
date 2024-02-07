@@ -18,32 +18,32 @@ import org.springframework.test.web.servlet.MockMvc;
 @SpringBootTest
 @AutoConfigureMockMvc
 @AutoConfigureTestDatabase
-public class PriceManagerIntegrationTest {
+class PriceManagerIntegrationTest {
 
   @Autowired private MockMvc mockMvc;
 
   @Test
-  public void requestAt10On14th_ShouldReturnExpectedPrice() {
+  void requestAt10On14th_ShouldReturnExpectedPrice() {
     performRequest("2020-06-14 10:00:00");
   }
 
   @Test
-  public void requestAt16On14th_ShouldReturnExpectedPrice() {
+  void requestAt16On14th_ShouldReturnExpectedPrice() {
     performRequest("2020-06-14 16:00:00");
   }
 
   @Test
-  public void requestAt21On14th_ShouldReturnExpectedPrice() {
+  void requestAt21On14th_ShouldReturnExpectedPrice() {
     performRequest("2020-06-14 21:00:00");
   }
 
   @Test
-  public void requestAt10On15th_ShouldReturnExpectedPrice() {
+  void requestAt10On15th_ShouldReturnExpectedPrice() {
     performRequest("2020-06-15 10:00:00");
   }
 
   @Test
-  public void requestAt21On16th_ShouldReturnExpectedPrice() {
+  void requestAt21On16th_ShouldReturnExpectedPrice() {
     performRequest("2020-06-16 21:00:00");
   }
 
@@ -64,7 +64,7 @@ public class PriceManagerIntegrationTest {
   }
 
   @Test
-  public void givenRequestWithInvalidFormatDateTime_ThenShouldReturnBadRequest() throws Exception {
+  void givenRequestWithInvalidFormatDateTime_ThenShouldReturnBadRequest() throws Exception {
     mockMvc
         .perform(
             get(TestConstants.PRICE_API_URL)
@@ -77,7 +77,7 @@ public class PriceManagerIntegrationTest {
   }
 
   @Test
-  public void givenRequestWithNonExistentProductId_ThenShouldReturnNotFound() throws Exception {
+  void givenRequestWithNonExistentProductId_ThenShouldReturnNotFound() throws Exception {
     mockMvc
         .perform(
             get(TestConstants.PRICE_API_URL)
@@ -93,7 +93,7 @@ public class PriceManagerIntegrationTest {
   }
 
   @Test
-  public void givenRequestWithNonExistentBrandId_ThenShouldReturnNotFound() throws Exception {
+  void givenRequestWithNonExistentBrandId_ThenShouldReturnNotFound() throws Exception {
     mockMvc
         .perform(
             get(TestConstants.PRICE_API_URL)
