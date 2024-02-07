@@ -46,6 +46,9 @@
 - A GlobalExceptionHandler is utilized to handle exceptions at a global level within the application. By propagating domain exceptions to the application layer and centralizing error handling, we eliminate the need for repetitive try/catch blocks in services. This strategy not only simplifies the codebase but also ensures consistent error handling across the application.
 ### Use of functional programming
 - Functional programming is used to simplify the code and make it more readable. This approach allows us to focus on the core business logic, resulting in a cleaner and more concise codebase.
+### Implementing JaCoCo for Code Coverage
+- JaCoCo was used to measure the code coverage of the application. This library provides a simple and straightforward way to measure the code coverage of the application. By leveraging the reports provided by JaCoCo, we can easily identify areas of the codebase that are not covered by tests and improve the overall quality of the application.
+- The code coverage report can be found in the following path: `target/site/jacoco/index.html`
 ### Focusing on Clean and Maintainable Code
 - Throughout the development process, a strong emphasis was placed on writing clean, well-documented, and maintainable code. This approach not only makes future modifications and extensions more manageable but also ensures that the application adheres to industry best practices.
 
