@@ -54,6 +54,28 @@
 ### Focusing on Clean and Maintainable Code
 - Throughout the development process, a strong emphasis was placed on writing clean, well-documented, and maintainable code. This approach not only makes future modifications and extensions more manageable but also ensures that the application adheres to industry best practices.
 
+## Architecture explanation
+- The project is structured into three main layers, each with a specific role in the application's architecture:
+#### Domain Layer
+The domain layer is at the heart of the application. It defines the essential operations and data structures that represent the business entities. This layer is technology-agnostic and focuses purely on the business domain.
+- **Entities/Models**: Represent the business concepts with their properties and behaviors. In this project, Java Records are used for immutability and clarity.
+- **Repositories**: Interfaces that abstract the data access without specifying the data source, allowing for flexibility in the implementation.
+#### Application Layer
+The application layer acts as a mediator between the domain and the infrastructure layers. It orchestrates the flow of data to and from the domain, applying any necessary transformations and ensuring that the business rules are followed.
+- **Converters**: Convert domain models to DTOs, ensuring a clean separation between the internal and external representations of data.
+- **DTOs**: Used to transfer data between the application layer and external clients or services, decoupling the internal models from external representations.
+- **Use Cases**: Define the application's high-level operations, encapsulating the business logic and coordinating the interactions between the domain and infrastructure layers.
+#### Infrastructure Layer
+The infrastructure layer provides implementations for the interfaces defined in the domain layer (ports) and contains all the technology-specific code. This includes data access mechanisms, external service integrations, and configuration.
+- **Repositories**: Concrete implementations of the domain's repository interfaces, providing the logic to access data sources.
+- **Configuration**: Contains configuration classes and beans that setup the application's infrastructure (e.g., database connections, external APIs).
+- **Exception Handling**: Global exception handling mechanisms that translate domain exceptions into appropriate HTTP responses.
+- **Controllers**: Define the API endpoints and handle incoming HTTP requests, delegating the processing to the application layer.
+- **Converters**: Convert entities to domain models, ensuring a clean separation between the internal and external representations of data.
+
+> [!NOTE]
+> This layered approach ensures a clean separation of concerns, making the application more maintainable, scalable, and adaptable to changes in technology or business requirements.
+
 ## To improve
 ### Considering Advanced Mapping Solutions
 - As our application evolves, we are open to adopting more powerful mapping tools like MapStruct, particularly if the API expands significantly. For now, Spring's built-in type conversion is sufficient, but we recognize the potential need for a more sophisticated mapping solution as the complexity of data transformations increases. MapStruct would offer greater efficiency and cleaner code for complex mapping scenarios, making it a valuable addition for future scalability.
